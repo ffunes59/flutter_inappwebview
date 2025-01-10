@@ -10,7 +10,7 @@ import WebKit
 
 @objcMembers
 public class InAppWebViewSettings: ISettings<InAppWebView> {
-    
+
     var useShouldOverrideUrlLoading = false
     var useOnLoadResource = false
     var useOnDownloadStart = false
@@ -82,8 +82,8 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
     var isFindInteractionEnabled = false
     var minimumViewportInset: UIEdgeInsets? = nil
     var maximumViewportInset: UIEdgeInsets? = nil
-    var isInspectable = false
-    var shouldPrintBackgrounds = false
+    // var isInspectable = false
+    // var shouldPrintBackgrounds = false
     var javaScriptHandlersOriginAllowList: [String]? = nil
     var javaScriptBridgeEnabled = true
     var javaScriptBridgeOriginAllowList: [String]? = nil
@@ -92,11 +92,11 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
     var pluginScriptsForMainFrameOnly = false
     var isUserInteractionEnabled = true
     var alpha: Double? = nil
-    
+
     override init(){
         super.init()
     }
-    
+
     override func parse(settings: [String: Any?]) -> InAppWebViewSettings {
         var settings = settings // re-assing to be able to use removeValue
         if let minimumViewportInsetMap = settings["minimumViewportInset"] as? [String : Double] {
@@ -119,7 +119,7 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
         }
         return self
     }
-    
+
     override func getRealSettings(obj: InAppWebView?) -> [String: Any?] {
         var realSettings: [String: Any?] = toMap()
         if let webView = obj {
@@ -189,8 +189,8 @@ public class InAppWebViewSettings: ISettings<InAppWebView> {
                 realSettings["isFindInteractionEnabled"] = webView.isFindInteractionEnabled
             }
             if #available(iOS 16.4, *) {
-                realSettings["isInspectable"] = webView.isInspectable
-                realSettings["shouldPrintBackgrounds"] = configuration.preferences.shouldPrintBackgrounds
+                // realSettings["isInspectable"] = webView.isInspectable
+                // realSettings["shouldPrintBackgrounds"] = configuration.preferences.shouldPrintBackgrounds
             }
         }
         return realSettings
